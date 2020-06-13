@@ -42,6 +42,8 @@ public class MapsActivity extends FragmentActivity implements
         SupportMapFragment mapFragment = (SupportMapFragment) getSupportFragmentManager()
                 .findFragmentById(R.id.map);
         mapFragment.getMapAsync(this);
+
+        Log.i(TAG,"okay goes on");
     }
 
     void getLocationPermission()
@@ -81,6 +83,7 @@ public class MapsActivity extends FragmentActivity implements
         if(requestCode!=LOCATION_PERMISSION_REQUEST_CODE)
         {
             Toast.makeText(this,"differnet Request Code ",Toast.LENGTH_LONG);
+            Log.i(TAG,"different request code :"+requestCode);
            // return;
         }
         if(PermissionUtils.isPermissionGranted(permissions,grantResults,Manifest.permission.ACCESS_FINE_LOCATION))
@@ -88,11 +91,13 @@ public class MapsActivity extends FragmentActivity implements
             //Enable to my Location layer if the permission has been granted
             //enablemyLocation;
             Toast.makeText(this,"Permission OK ",Toast.LENGTH_LONG);
+            Log.i(TAG,"Permission OK:"+requestCode);
         }
         else
         {
             //Permission was denied . Display an error message
             Toast.makeText(this,"Failed Permission",Toast.LENGTH_LONG);
+            Log.e(TAG,"Failed Permission:"+requestCode);
         }
 
     }
@@ -196,10 +201,11 @@ public class MapsActivity extends FragmentActivity implements
 
     @Override
     public boolean onMyLocationButtonClick() {
+        Log.d(TAG,"my Location button clicked !");
         Toast.makeText(this,"my Location button clicked",Toast.LENGTH_LONG).show();
         // Return false so that we don't consume the event and the default behavior still occurs
         // (the camera animates to the user's current position).
-        return false;
+        return true;//false;
     }
 
     @Override
