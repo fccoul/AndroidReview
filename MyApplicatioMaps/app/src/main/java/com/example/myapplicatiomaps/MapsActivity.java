@@ -2,9 +2,13 @@ package com.example.myapplicatiomaps;
 
 import android.Manifest;
 import android.content.pm.PackageManager;
+import android.location.Location;
 import android.os.Bundle;
 import android.util.Log;
+import android.widget.Toast;
 
+import androidx.annotation.NonNull;
+import androidx.core.app.ActivityCompat;
 import androidx.core.content.ContextCompat;
 import androidx.fragment.app.FragmentActivity;
 
@@ -12,16 +16,18 @@ import com.google.android.gms.maps.CameraUpdateFactory;
 import com.google.android.gms.maps.GoogleMap;
 import com.google.android.gms.maps.OnMapReadyCallback;
 import com.google.android.gms.maps.SupportMapFragment;
+import com.google.android.gms.maps.model.CameraPosition;
 import com.google.android.gms.maps.model.LatLng;
 import com.google.android.gms.maps.model.MarkerOptions;
 
 
 public class MapsActivity extends FragmentActivity implements
-       // GoogleMap.OnMyLocationButtonClickListener,
-        //GoogleMap.OnMyLocationClickListener,
+        GoogleMap.OnMyLocationButtonClickListener,
+        GoogleMap.OnMyLocationClickListener,
         OnMapReadyCallback {
 
     private static final String TAG ="mon test" ;
+    private static final int TAG_CODE_PERMISSION_LOCATION = 8;
     private GoogleMap mMap;
 
     private static final LatLng MOUNTAIN_VIEW=new LatLng(46.846606, -71.24163);
@@ -38,7 +44,7 @@ public class MapsActivity extends FragmentActivity implements
         mapFragment.getMapAsync(this);
     }
 
-    void draftMethode()
+    void getLocationPermission()
     {
         if(ContextCompat.checkSelfPermission(this, Manifest.permission.ACCESS_FINE_LOCATION)
         == PackageManager.PERMISSION_GRANTED)
@@ -46,6 +52,7 @@ public class MapsActivity extends FragmentActivity implements
             if(mMap !=null)
             {
                 mMap.setMyLocationEnabled(true);
+                mMap.getUiSettings().setMyLocationButtonEnabled(true);
             }
             else
             {
@@ -54,9 +61,18 @@ public class MapsActivity extends FragmentActivity implements
                         Manifest.permission.ACCESS_FINE_LOCATION,true);
             }
         }
+        else {
+            Toast.makeText(this,"nicht ",Toast.LENGTH_LONG);
+            ActivityCompat.requestPermissions(this, new String[] {
+                            Manifest.permission.ACCESS_FINE_LOCATION,
+                            Manifest.permission.ACCESS_COARSE_LOCATION },
+                    TAG_CODE_PERMISSION_LOCATION);
+        }
+
     }
 
-/*
+
+    //traite le resultat du retour de la demande de permission
     @Override
     public void onRequestPermissionsResult(int requestCode, @NonNull String[] permissions, @NonNull int[] grantResults)
     {
@@ -80,7 +96,7 @@ public class MapsActivity extends FragmentActivity implements
         }
 
     }
-*/
+
     /**
      * Manipulates the map once available.
      * This callback is triggered when the map is ready to be used.
@@ -96,6 +112,8 @@ public class MapsActivity extends FragmentActivity implements
         // TODO: Before enabling the My Location layer, you must request
         // location permission from the user. This sample does not include
         // a request for location permission.
+
+        getLocationPermission();
         /*
         if(checkPermission())
         {
@@ -155,7 +173,7 @@ public class MapsActivity extends FragmentActivity implements
         LatLng piauleQC=new LatLng(46.846920, -71.240128);
         mMap.addMarker(new MarkerOptions().position(piauleQC).title("Marker in QC Charlesbourg"));
         mMap.moveCamera(CameraUpdateFactory.newLatLng(piauleQC));
-/*
+
         CameraPosition cameraPosition=new CameraPosition.Builder()
         .target(MOUNTAIN_VIEW)
         .zoom(17)
@@ -164,8 +182,8 @@ public class MapsActivity extends FragmentActivity implements
         .build();
         mMap.animateCamera(CameraUpdateFactory.newCameraPosition(cameraPosition));
         mMap.setMapType(mMap.MAP_TYPE_SATELLITE);
-*/
 
+        mMap.setMyLocationEnabled(true);
 
     }
 
@@ -175,7 +193,7 @@ public class MapsActivity extends FragmentActivity implements
         return(ContextCompat.checkSelfPermission(this, Manifest.permission.ACCESS_FINE_LOCATION)
         ==PackageManager.PERMISSION_GRANTED);
     }
-/*
+
     @Override
     public boolean onMyLocationButtonClick() {
         Toast.makeText(this,"my Location button clicked",Toast.LENGTH_LONG).show();
@@ -188,5 +206,5 @@ public class MapsActivity extends FragmentActivity implements
     public void onMyLocationClick(@NonNull Location location) {
         Toast.makeText(this,"Current Location :\n"+location,Toast.LENGTH_LONG).show();
     }
-    */
+
 }
