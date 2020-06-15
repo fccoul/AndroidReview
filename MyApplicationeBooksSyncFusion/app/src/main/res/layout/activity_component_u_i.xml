@@ -1,0 +1,176 @@
+<?xml version="1.0" encoding="utf-8"?>
+<androidx.constraintlayout.widget.ConstraintLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    tools:context=".ActivityComponentUI">
+
+    <ImageView
+        android:id="@+id/imgVw"
+        android:layout_width="150dp"
+        android:layout_height="100dp"
+        android:scaleType="fitXY"
+        tools:ignore="MissingConstraints" />
+
+    <ImageView
+        android:id="@+id/imgVw1"
+        android:layout_width="150dp"
+        android:layout_height="100dp"
+        android:scaleType="fitCenter"
+        app:layout_constraintTop_toBottomOf="@+id/imgVw"
+        tools:ignore="MissingConstraints" />
+    
+    <Button
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:id="@+id/btnImg"
+        android:drawableLeft="@mipmap/ic_launcher"
+        android:drawablePadding="10dp"
+        app:layout_constraintLeft_toRightOf="@id/imgVw1"
+        android:text="@string/btnImgTxt"
+        tools:ignore="MissingConstraints" />
+
+    <TextView
+        android:id="@+id/txtVwP"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginTop="68dp"
+        android:text="look , a big blue serif font"
+        android:textColor="@color/colorPrimaryDark"
+        android:textIsSelectable="true"
+        android:textStyle="italic"
+        android:typeface="serif"
+
+        app:layout_constraintTop_toBottomOf="@id/btnImg"
+        app:layout_constraintLeft_toRightOf="@id/imgVw1"
+        tools:ignore="MissingConstraints" />
+
+    <EditText
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:id="@+id/eDTxt"
+        android:hint="tap here to edit this text"
+        android:inputType="text|textCapWords|textAutoCorrect"
+        app:layout_constraintTop_toBottomOf="@id/txtVwP"
+        android:layout_marginTop="20dp"
+        tools:ignore="MissingConstraints"
+        android:imeOptions="actionSearch"/>
+
+    <CheckBox
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:id="@+id/chkGreen"
+        app:layout_constraintTop_toBottomOf="@id/eDTxt"
+        android:text="Green text"
+        android:onClick="chkBoxClicked"
+        tools:ignore="MissingConstraints" />
+
+    <CheckBox
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:text="Bold text"
+        android:id="@+id/chkBold"
+        app:layout_constraintTop_toBottomOf="@id/eDTxt"
+        app:layout_constraintLeft_toRightOf="@id/chkGreen"
+        android:onClick="chkBoxClicked"
+        />
+
+    <CheckBox
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:text="Big text"
+        android:id="@+id/chkBig"
+        app:layout_constraintTop_toBottomOf="@id/eDTxt"
+        app:layout_constraintLeft_toRightOf="@id/chkBold"
+        android:onClick="chkBoxClicked"/>
+
+
+    <TextView
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:id="@+id/txtVwChk"
+        android:text="beautiful life guys !"
+        android:textIsSelectable="false"
+        app:layout_constraintTop_toBottomOf="@id/chkGreen"
+        tools:ignore="MissingConstraints" />
+
+
+
+    <RadioGroup
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        app:layout_constraintTop_toBottomOf="@+id/txtVwChk"
+android:orientation="vertical"
+        android:id="@+id/rdGrp">
+        <RadioButton
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:id="@+id/sSerif"
+            android:text="Sans Serif"
+            android:onClick="rdButtonClicked"
+            />
+        <RadioButton
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:id="@+id/serif"
+            android:text="Serif"
+            android:onClick="rdButtonClicked"
+            />
+        <RadioButton
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:id="@+id/monoSpace"
+            android:text="MonoSPace"
+            android:onClick="rdButtonClicked"
+            />
+    </RadioGroup>
+
+    <TextView
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:id="@+id/txtVwRd"
+        android:text="never come back bro ' !"
+        android:textIsSelectable="false"
+        app:layout_constraintTop_toBottomOf="@id/rdGrp"
+        tools:ignore="MissingConstraints" />
+
+    <TextView
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:id="@+id/txtVwSpin"
+        android:text="Choose item man !"
+        android:textIsSelectable="false"
+        app:layout_constraintTop_toBottomOf="@id/txtVwRd"
+        tools:ignore="MissingConstraints" />
+
+    <Spinner
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        app:layout_constraintTop_toBottomOf="@id/txtVwRd"
+        app:layout_constraintLeft_toRightOf="@id/txtVwSpin"
+        android:id="@+id/colorSpinner"/>
+
+    <Button
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:id="@+id/btnDate"
+        app:layout_constraintTop_toBottomOf="@id/txtVwSpin"
+        android:text="Pick date !"
+        android:onClick="showDatePickerDialog"
+        android:padding="10dp"
+        tools:ignore="MissingConstraints" />
+
+
+    <TextView
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:id="@+id/pickerText"
+        android:text="Date Choosed"
+        android:textIsSelectable="false"
+        app:layout_constraintTop_toBottomOf="@id/btnDate"
+        tools:ignore="MissingConstraints" />
+
+
+
+</androidx.constraintlayout.widget.ConstraintLayout>

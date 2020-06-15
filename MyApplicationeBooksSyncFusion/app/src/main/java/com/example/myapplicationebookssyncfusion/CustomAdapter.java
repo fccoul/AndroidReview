@@ -28,12 +28,13 @@ public class CustomAdapter extends BaseAdapter {
         return data.size();
     }
 
+    //methode return position dans la liste -cursorfierst strat at 0
     @Override
     public Object getItem(int position) {
         return data.get(position);
     }
 
-    //method should return the row ID or position of item
+    //method should return the row ID unique or position of item into the list
     @Override
     public long getItemId(int position) {
         return position;

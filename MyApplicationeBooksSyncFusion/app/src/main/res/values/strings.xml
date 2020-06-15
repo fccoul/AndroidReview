@@ -5,4 +5,13 @@
     <string name="btnBlue">blue Button</string>
     <string name="nameLabel">Full Name : &#160;</string>
     <string name="phoneLabel">Phone : :&#160;</string>
+    <string name="btnImgTxt">Android !</string>
+    <string name="bold_text">Bold text</string>
+
+    <string-array name="spinnerColor">
+        <item>Red</item>
+        <item>Blue</item>
+        <item>Green</item>
+        <item>Black</item>
+    </string-array>
 </resources>
