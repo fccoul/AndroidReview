@@ -1,18 +1,19 @@
 package com.example.myapplicationebookssyncfusion;
 
 import androidx.annotation.NonNull;
+import androidx.appcompat.app.ActionBar;
 import androidx.appcompat.app.AppCompatActivity;
 import androidx.fragment.app.Fragment;
 import androidx.fragment.app.FragmentManager;
 import androidx.fragment.app.FragmentPagerAdapter;
+import androidx.fragment.app.FragmentTransaction;
 import androidx.viewpager.widget.ViewPager;
 
-import android.app.ActionBar;
-import android.app.FragmentTransaction;
 import android.content.res.Resources;
 import android.drm.DrmStore;
 import android.graphics.Color;
 import android.graphics.Typeface;
+import android.graphics.drawable.ColorDrawable;
 import android.graphics.drawable.Drawable;
 import android.os.Bundle;
 import android.util.Log;
@@ -104,10 +105,13 @@ img.setImageDrawable((srcImg));
 
         //final ViewPager vPagerTab=(ViewPager)findViewById(R.id.vmFrgPagerTab);
         //vPagerTab.setAdapter(sPa);
-/*
-        final ActionBar actionBar= getActionBar();
-        actionBar.setNavigationMode(ActionBar.NAVIGATION_MODE_TABS);
-        ActionBar.TabListener tablistener=new ActionBar.TabListener() {
+
+        //final ActionBar actionBar= getActionBar();
+        final androidx.appcompat.app.ActionBar actionBar= getSupportActionBar();
+        actionBar.setNavigationMode(androidx.appcompat.app.ActionBar.NAVIGATION_MODE_TABS);
+        androidx.appcompat.app.ActionBar.TabListener tablistener=new androidx.appcompat.app.ActionBar.TabListener() {
+
+
             @Override
             public void onTabSelected(ActionBar.Tab tab, FragmentTransaction ft) {
                 vPager.setCurrentItem(tab.getPosition());
@@ -125,7 +129,20 @@ img.setImageDrawable((srcImg));
         };
         actionBar.addTab(actionBar.newTab().setText("Home").setTabListener(tablistener));
         actionBar.addTab(actionBar.newTab().setText("Articles").setTabListener(tablistener));
-*/
+        String [] arrayCol=getResources().getStringArray(R.array.colorPagesViewPager);
+        Log.d(TAG, String.valueOf(arrayCol.length));
+        Log.d(TAG,getResources().getStringArray(R.array.colorPagesViewPager)[3] );
+        actionBar.setBackgroundDrawable(new ColorDrawable(Color.parseColor(arrayCol[3])));
+
+        vPager.setOnPageChangeListener(new ViewPager.SimpleOnPageChangeListener(){
+            @Override
+            public void onPageSelected(int position) {
+                actionBar.setSelectedNavigationItem(position);
+
+            }
+        });
+
+
     }
 
     private void synchronizeTxtVw() {

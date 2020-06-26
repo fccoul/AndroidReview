@@ -28,11 +28,12 @@ public class ActivityMenuTab extends AppCompatActivity {
     private void configureViewPagerAndTabs()
     {
         ViewPager pager=(ViewPager)findViewById(R.id.menuSwipe);
-        pager.setAdapter(new PageAdapter(getSupportFragmentManager(),getResources().getIntArray(R.array.colorPagesViewPager)));
-
+        //pager.setAdapter(new PageAdapter(getSupportFragmentManager(),getResources().getIntArray(R.array.colorPagesViewPager)));
+        //String [] arrayCol=getResources().getStringArray(R.array.colorPagesViewPager);
+        pager.setAdapter(new PageAdapter(getSupportFragmentManager(),getResources().getIntArray(R.array.colorPagesVPChar)));
         TabLayout tb=(TabLayout)findViewById(R.id.menuTabs);
         tb.setupWithViewPager(pager);
         //Tabs have the same width
-        tb.setTabMode(TabLayout.MODE_FIXED);
+        tb.setTabMode(TabLayout.MODE_SCROLLABLE);
     }
 }
