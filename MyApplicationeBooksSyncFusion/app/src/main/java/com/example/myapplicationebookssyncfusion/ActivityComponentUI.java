@@ -1,17 +1,24 @@
 package com.example.myapplicationebookssyncfusion;
 
+import androidx.annotation.NonNull;
 import androidx.appcompat.app.AppCompatActivity;
+import androidx.fragment.app.Fragment;
+import androidx.fragment.app.FragmentManager;
+import androidx.fragment.app.FragmentPagerAdapter;
+import androidx.viewpager.widget.ViewPager;
 
-import android.annotation.SuppressLint;
+import android.app.ActionBar;
+import android.app.FragmentTransaction;
 import android.content.res.Resources;
+import android.drm.DrmStore;
 import android.graphics.Color;
 import android.graphics.Typeface;
 import android.graphics.drawable.Drawable;
 import android.os.Bundle;
-import android.provider.MediaStore;
 import android.util.Log;
 import android.util.TypedValue;
 import android.view.KeyEvent;
+import android.view.Menu;
 import android.view.View;
 import android.view.inputmethod.EditorInfo;
 import android.widget.AdapterView;
@@ -23,6 +30,7 @@ import android.widget.ImageView;
 import android.widget.RadioButton;
 import android.widget.RadioGroup;
 import android.widget.Spinner;
+import android.widget.TableLayout;
 import android.widget.TextView;
 
 import java.util.ArrayList;
@@ -89,6 +97,35 @@ img.setImageDrawable((srcImg));
         serif.setChecked(true);
         rdButtonClicked(null);
 
+
+        SimplePagerAdapter sPa=new SimplePagerAdapter(getSupportFragmentManager());
+        final ViewPager vPager=(ViewPager)findViewById(R.id.vmFrgPager);
+        vPager.setAdapter(sPa);
+
+        //final ViewPager vPagerTab=(ViewPager)findViewById(R.id.vmFrgPagerTab);
+        //vPagerTab.setAdapter(sPa);
+/*
+        final ActionBar actionBar= getActionBar();
+        actionBar.setNavigationMode(ActionBar.NAVIGATION_MODE_TABS);
+        ActionBar.TabListener tablistener=new ActionBar.TabListener() {
+            @Override
+            public void onTabSelected(ActionBar.Tab tab, FragmentTransaction ft) {
+                vPager.setCurrentItem(tab.getPosition());
+            }
+
+            @Override
+            public void onTabUnselected(ActionBar.Tab tab, FragmentTransaction ft) {
+
+            }
+
+            @Override
+            public void onTabReselected(ActionBar.Tab tab, FragmentTransaction ft) {
+
+            }
+        };
+        actionBar.addTab(actionBar.newTab().setText("Home").setTabListener(tablistener));
+        actionBar.addTab(actionBar.newTab().setText("Articles").setTabListener(tablistener));
+*/
     }
 
     private void synchronizeTxtVw() {
@@ -161,6 +198,7 @@ img.setImageDrawable((srcImg));
         switch(setColor)
         {
             case "Red":hexColor="#FFAA0000";
+                Log.d(TAG,"Color red chosen !");
                 break;
             case "Blue":hexColor="#FF0000AA";
                 break;
@@ -224,5 +262,41 @@ img.setImageDrawable((srcImg));
         tv.setTypeface(Typeface.create(typeface,Typeface.NORMAL));
 
         //grp.clearCheck();
+
+
     }
+
+ public static class SimplePagerAdapter extends FragmentPagerAdapter
+ {
+
+     public SimplePagerAdapter(@NonNull FragmentManager fm) {
+         super(fm);
+     }
+
+     @NonNull
+     @Override
+     public Fragment getItem(int position) {
+         Log.d(TAG,"Log getItem !");
+         switch (position)
+         {
+             case 0: Log.d(TAG,"HomeFragment Switched !");
+                 return new HomeFragment();
+             case 1: return new ArtcileFragment();
+             default:return  null;
+         }
+
+     }
+
+     @Override
+     public int getCount() {
+         return 2; //nbre page to display
+     }
+ }
+
+ public boolean onCreateOptionsMenu(Menu menu)
+ {
+     //inflate the menu; this adds items to the action bar if it is present.
+     //getMenuInflater().inflate(R.menu.main,menu);
+     return  true;
+ }
 }

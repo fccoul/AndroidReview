@@ -23,10 +23,14 @@ public class PickerActivity extends FragmentActivity implements DatePickerDialog
         String message=String.format("Selected Date : %d %d %d",month+1,dayOfMonth,year);
         txt.setText(message);
     }
-
     public void showDatePickerDialog(View view)
     {
         DialogFragment picker=new DatePickerFragment();
         picker.show(getSupportFragmentManager(),"datePicker");
+
+
     }
+
+
+
 }
