@@ -97,8 +97,8 @@ void GetInfosFromBDD()
             TextView tvd = (TextView) findViewById(R.id.txtSndActivity);
             if(cursor!=null && cursor.getCount()>0) {
                 //Display the most recent record
-                //cursor.moveToLast();
-                cursor.moveToPosition(3);
+                cursor.moveToLast();
+                //cursor.moveToPosition(3);
                 long id = cursor.getLong(0); //index position tient compte d elaposition lors d ela declaration de []columns
                 String message = cursor.getString(1);
                 Log.d(getClass().getSimpleName(), String.format("Retrieved into from database. ID:%d Message: %s", id, message));

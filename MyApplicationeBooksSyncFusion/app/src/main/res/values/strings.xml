@@ -19,4 +19,7 @@
     <string name="hello_blank_fragment">Hello blank fragment</string>
     <string name="ClearShPref">Clear Datas Session</string>
     <string name="SwitchPage">Switch Page</string>
+    <string name="SaveSP">Save Spref</string>
+    <string name="ReadSP">Read SP</string>
+    <string name="ClearSP">Clear SP</string>
 </resources>

@@ -7,12 +7,14 @@
     tools:context=".PersistADataActivity">
 
     <EditText
-        android:layout_width="wrap_content"
+        android:layout_width="match_parent"
         android:layout_height="wrap_content"
        android:id="@+id/txData"
+        android:inputType="text"
         android:textAllCaps="false"
         android:hint="Tap Here man"
         android:layout_marginTop="20dp"
+        android:imeOptions="actionNext"
         tools:ignore="MissingConstraints" />
 
     <Button
@@ -32,6 +34,60 @@
         app:layout_constraintLeft_toRightOf="@id/btnResetData"
         android:onClick="SwitchPage"
         tools:ignore="MissingConstraints" />
+
+    <Button
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:id="@+id/btnSaveSP"
+        android:text="@string/SaveSP"
+        app:layout_constraintTop_toBottomOf="@+id/btnResetData"
+        android:onClick="Save"
+        tools:ignore="MissingConstraints" />
+    <Button
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:id="@+id/btnReadSP"
+        android:text="@string/ReadSP"
+        app:layout_constraintTop_toBottomOf="@+id/btnResetData"
+        app:layout_constraintLeft_toRightOf="@id/btnSaveSP"
+        android:onClick="Read"
+        tools:ignore="MissingConstraints" />
+
+    <Button
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:text="@string/ClearSP"
+        app:layout_constraintTop_toBottomOf="@+id/btnResetData"
+        app:layout_constraintLeft_toRightOf="@id/btnReadSP"
+        android:onClick="Clean"
+        tools:ignore="MissingConstraints" />
+
+        <EditText
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:id="@+id/etEmail"
+            android:hint="Email"
+            android:inputType="textEmailAddress"
+            app:layout_constraintTop_toBottomOf="@id/btnSaveSP"
+            android:layout_marginTop="20dp"/>
+        <EditText
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:id="@+id/etName"
+            android:hint="Name"
+            android:inputType="text"
+            android:ems="10"
+            android:layout_marginTop="20dp"
+            app:layout_constraintTop_toBottomOf="@id/etEmail"/>
+
+          <EditText
+              android:layout_width="match_parent"
+              android:layout_height="wrap_content"
+              android:id="@+id/etcodePIN"
+              android:hint="Code PIN"
+              android:inputType="number"
+              app:layout_constraintTop_toBottomOf="@id/etName"/>
+
 
 
 </androidx.constraintlayout.widget.ConstraintLayout>
