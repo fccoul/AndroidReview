@@ -15,5 +15,12 @@ android:text="Hello 2nde Activity"
         app:layout_constraintTop_toTopOf="parent"
         app:layout_constraintLeft_toLeftOf="parent"
         app:layout_constraintRight_toRightOf="parent"
+
          />
+
+    <TextView
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        app:layout_constraintTop_toBottomOf="@id/txtSndActivity"
+        android:id="@+id/txtsaveFile"/>
 </androidx.constraintlayout.widget.ConstraintLayout>

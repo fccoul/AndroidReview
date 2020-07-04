@@ -108,7 +108,7 @@ public class PersistADataActivity extends AppCompatActivity {
         edT.setText(existingInput);
         }
         else {
-        edT.setTextColor(Color.YELLOW);
+        edT.setTextColor(Color.BLACK);
         }
     }
 
@@ -137,10 +137,12 @@ public class PersistADataActivity extends AppCompatActivity {
         //commit the changes
         editorPref.commit();
     }
-    
+
     //store information directly on the device’s hard drive.  for complex datas
     //FileOutputStream works with bytes, so the string has to be converted before
     //passing it to write().
+    //Files saved to internal storage are deleted when your app in
+    //uninstalled.
     public void saveStringWithInternalStorage(String filename,String value) throws IOException {
         FileOutputStream output=  openFileOutput(filename,MODE_PRIVATE);
         byte[] data=value.getBytes();
@@ -166,23 +168,17 @@ public class PersistADataActivity extends AppCompatActivity {
         dbHelper.close();
     }
 
-    public void ClearDataSession(View view) {
-Button b=(Button)view;
-/*
-SharedPreferences settings=getPreferences(MODE_PRIVATE);
-settings.edit().clear().commit(); //remove them all
-Log.d(getClass().getSimpleName(),"All Data Session Cleared !");
- */
-    }
-
     public void SwitchPage(View view) throws IOException {
         Intent intent=new Intent(this,SecondActivity.class);
 
-        EditText edT=(EditText)findViewById(R.id.txData);
+        //EditText edT=(EditText)findViewById(R.id.txData);
         //-------------------Save into File in disk drive
-        /*
-        String filePath="/Get_File/filename.txt";
+
+        //String filePath="/Get_File/filename.txt";
+        String filePath="filename.txt";
         File myFile=new File(Environment.getExternalStorageDirectory().getAbsolutePath()+filePath);
+        Log.d(getClass().getSimpleName(),myFile.getAbsolutePath());
+        /*
         if(!myFile.exists())
         {
             try {
@@ -192,11 +188,13 @@ Log.d(getClass().getSimpleName(),"All Data Session Cleared !");
                 e.printStackTrace();
             }
         }
-        EditText edT=(EditText)findViewById(R.id.txData);
-        saveStringWithInternalStorage(myFile.toString(),edT.getText().toString());
-
-        intent.putExtra(EXTRA_MESSAGE_PATH,myFile.toString());
         */
+        edT=(EditText)findViewById(R.id.txData);
+        //saveStringWithInternalStorage(myFile.toString(),edT.getText().toString());
+        saveStringWithInternalStorage(filePath.toString(),edT.getText().toString());
+
+        //intent.putExtra(EXTRA_MESSAGE_PATH,myFile.toString());
+        intent.putExtra(EXTRA_MESSAGE_PATH,filePath.toString());
 
         saveStringWithDatabase(edT.getText().toString());
         startActivity(intent);

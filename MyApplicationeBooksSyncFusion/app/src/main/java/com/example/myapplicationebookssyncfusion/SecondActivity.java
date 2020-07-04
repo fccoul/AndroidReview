@@ -25,14 +25,14 @@ public class SecondActivity extends AppCompatActivity {
 
         Intent intent=getIntent();
         String message=intent.getStringExtra(MainActivity.EXTRA_MESSAGE);
-        TextView tv = (TextView) findViewById(R.id.txtSndActivity);
+        TextView tv = (TextView) findViewById(R.id.txtsaveFile);
         if(message!=null &&!message.isEmpty()) {
 
             tv.setText(message);
             Log.d(TAG, message);
         }
 
-        /*
+
         String messPath=intent.getStringExtra(PersistADataActivity.EXTRA_MESSAGE_PATH);
         if(messPath!=null &&!messPath.isEmpty()) {
             try {
@@ -41,7 +41,7 @@ public class SecondActivity extends AppCompatActivity {
                 e.printStackTrace();
             }
         }
-        */
+
         GetInfosFromBDD();
     }
 
@@ -97,8 +97,8 @@ void GetInfosFromBDD()
             TextView tvd = (TextView) findViewById(R.id.txtSndActivity);
             if(cursor!=null && cursor.getCount()>0) {
                 //Display the most recent record
-                cursor.moveToLast();
-                //cursor.moveToPosition(3);
+                //cursor.moveToLast();
+                cursor.moveToPosition(4);
                 long id = cursor.getLong(0); //index position tient compte d elaposition lors d ela declaration de []columns
                 String message = cursor.getString(1);
                 Log.d(getClass().getSimpleName(), String.format("Retrieved into from database. ID:%d Message: %s", id, message));

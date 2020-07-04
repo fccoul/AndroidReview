@@ -20,18 +20,9 @@
     <Button
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:id="@+id/btnResetData"
-        android:text="@string/ClearShPref"
-        app:layout_constraintTop_toBottomOf="@+id/txData"
-        android:onClick="ClearDataSession"
-        tools:ignore="MissingConstraints" />
-
-    <Button
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
         android:text="@string/SwitchPage"
         app:layout_constraintTop_toBottomOf="@+id/txData"
-        app:layout_constraintLeft_toRightOf="@id/btnResetData"
+        app:layout_constraintLeft_toRightOf="@id/btnClearSP"
         android:onClick="SwitchPage"
         tools:ignore="MissingConstraints" />
 
@@ -40,7 +31,7 @@
         android:layout_height="wrap_content"
         android:id="@+id/btnSaveSP"
         android:text="@string/SaveSP"
-        app:layout_constraintTop_toBottomOf="@+id/btnResetData"
+        app:layout_constraintTop_toBottomOf="@+id/txData"
         android:onClick="Save"
         tools:ignore="MissingConstraints" />
     <Button
@@ -48,7 +39,7 @@
         android:layout_height="wrap_content"
         android:id="@+id/btnReadSP"
         android:text="@string/ReadSP"
-        app:layout_constraintTop_toBottomOf="@+id/btnResetData"
+        app:layout_constraintTop_toBottomOf="@+id/txData"
         app:layout_constraintLeft_toRightOf="@id/btnSaveSP"
         android:onClick="Read"
         tools:ignore="MissingConstraints" />
@@ -57,8 +48,9 @@
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:text="@string/ClearSP"
-        app:layout_constraintTop_toBottomOf="@+id/btnResetData"
+        app:layout_constraintTop_toBottomOf="@+id/txData"
         app:layout_constraintLeft_toRightOf="@id/btnReadSP"
+        android:id="@+id/btnClearSP"
         android:onClick="Clean"
         tools:ignore="MissingConstraints" />
 
