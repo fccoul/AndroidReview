@@ -1,0 +1,26 @@
+<?xml version="1.0" encoding="utf-8"?>
+<menu xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:tools="http://schemas.android.com/tools"
+    tools:showIn="navigation_view">
+
+
+    <group android:checkableBehavior="single">
+           <item android:id="@+id/connexion"
+               android:icon="@drawable/baseline_record_voice_over_black_18dp"
+               android:title="Connexion"
+               />
+    </group>
+    <item android:title="Configuration">
+        <menu>
+            <group android:checkableBehavior="single">
+                <item android:id="@+id/balance"
+                    android:title="Balance"
+                    android:icon="@drawable/baseline_account_balance_black_18dp"/>
+                <item android:id="@+id/transport"
+                    android:title="Transport"
+                    android:icon="@drawable/baseline_commute_black_18dp"/>
+            </group>
+        </menu>
+    </item>
+
+</menu>

@@ -22,4 +22,7 @@
     <string name="SaveSP">Save Spref</string>
     <string name="ReadSP">Read SP</string>
     <string name="ClearSP">Clear SP</string>
+
+    <string name="navigation_drawer_open">Open navigation drawer</string>
+    <string name="navigation_drawer_close">Close navigation drawer</string>
 </resources>
