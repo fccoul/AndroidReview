@@ -24,4 +24,25 @@
         <item name="colorControlNormal">@android:color/white</item>
     </style>
 
+
+    <style name="appTh" parent="Theme.AppCompat.Light.NoActionBar">
+
+          <item name="android:windowDisablePreview">true</item>
+        <item name="windowActionBar">false</item>
+        <item name="android:textColorPrimary">@android:color/white</item>
+        <item name="android:textColorSecondary">@android:color/white</item>
+        <item name="android:actionMenuTextColor">@android:color/white</item>
+        <item name="android:windowNoTitle">true</item>
+        <item name="colorPrimary">@color/colorPrimaryT</item>
+        <item name="colorPrimaryDark">@color/colorPrimaryDarkT</item>
+        <item name="colorAccent">@color/colorAccentT</item>
+
+        <!--It should be true otherwise action mode will not overlay toolbar-->
+        <item name="android:windowActionModeOverlay">true</item>
+
+        <!--For custom Action mode background Color/drawable-->
+        <item name="actionModeBackground">@color/colorAccentT</item>
+
+    </style>
+
 </resources>

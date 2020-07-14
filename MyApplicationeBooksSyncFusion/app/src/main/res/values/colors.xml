@@ -22,4 +22,9 @@
         <item>#FD96A2</item>
     </array>
 
+    <color name="colorPrimaryT">#D32F2F</color>
+    <color name="colorPrimaryDarkT">#C62828</color>
+    <color name="colorAccentT">#F44336</color>
+    <color name="grey">#EEEEEE</color>
+
 </resources>
