@@ -2,11 +2,19 @@ package com.example.myapplicationebookssyncfusion;
 
 import android.os.Bundle;
 
+import androidx.appcompat.app.AppCompatActivity;
 import androidx.fragment.app.Fragment;
 
+import android.util.SparseBooleanArray;
+import android.view.ActionMode;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
+import android.widget.AdapterView;
+import android.widget.ListView;
+import android.widget.Toast;
+
+import java.util.ArrayList;
 
 
 /**
@@ -19,6 +27,14 @@ public class ListViewFragment extends Fragment {
     // the fragment initialization parameters, e.g. ARG_ITEM_NUMBER
     private static final String ARG_PARAM1 = "param1";
     private static final String ARG_PARAM2 = "param2";
+
+
+    public static View view;
+    private static ListView_Adapter adapter;
+    private static ListView listView;
+    //Action mode Toolbar
+    private ActionMode mActionMode;
+    private static ArrayList<Item_Model> item_models;
 
     // TODO: Rename and change types of parameters
     private String mParam1;
@@ -59,6 +75,74 @@ public class ListViewFragment extends Fragment {
     public View onCreateView(LayoutInflater inflater, ViewGroup container,
                              Bundle savedInstanceState) {
         // Inflate the layout for this fragment
-        return inflater.inflate(R.layout.fragment_list_view, container, false);
+        view=inflater.inflate(R.layout.fragment_list_view, container, false);
+        populateListView();
+        implementListViewClickListeners();
+        return view;
+    }
+
+    private void implementListViewClickListeners() {
+        listView.setOnItemClickListener(new AdapterView.OnItemClickListener(){
+
+            @Override
+            public void onItemClick(AdapterView<?> parent, View view, int position, long id) {
+                //if ActionMode not null select item
+                if(mActionMode!=null)
+                    onListItemSelect(position);
+            }
+        });
+
+        listView.setOnItemLongClickListener(new AdapterView.OnItemLongClickListener() {
+            @Override
+            public boolean onItemLongClick(AdapterView<?> parent, View view, int position, long id) {
+                //Select item long click
+                 onListItemSelect(position);
+                 return true;
+            }
+        });
+    }
+
+    private void onListItemSelect(int position) {
+
+        adapter.toggleSelection(position);//toggle the selection
+        boolean hasCheckedItems=adapter.getSelectedCount()>0; //check if any items are already selected or not
+        if(hasCheckedItems && mActionMode==null)
+          mActionMode=((AppCompatActivity)getActivity()).startSupportActionMode(new Toolbar_A)
+    }
+
+    //Set Action mode null after use
+    public void setNullActionMode()
+    {
+        if(mActionMode!=null)
+            mActionMode=null;
+    }
+
+    //Delete Selected rows
+    public void deleteRows()
+    {
+        SparseBooleanArray selected=adapter.getSelectedIds();
+        for(int i=(selected.size()-1);i>=0;i--)
+        {
+            if(selected.valueAt(i))
+            {
+                //if current id is selected remove tne item via key
+                item_models.remove(selected.keyAt(i));
+                adapter.notifyDataSetChanged();
+            }
+        }
+        Toast.makeText(getActivity(),selected.size()+" item deleted",Toast.LENGTH_SHORT).show();
+        mActionMode.finish();;
+    }
+
+    //--poulate Listview with dummy datas
+    private void populateListView() {
+        listView=(ListView)view.findViewById(R.id.lstVwid);
+        item_models=new ArrayList<>();
+        for(int i=1;i<=40;i++)
+            item_models.add(new Item_Model("Title "+i,"Sub Title "+i));
+        adapter=new ListView_Adapter(getActivity(),item_models);
+        listView.setAdapter(adapter);
+        adapter.notifyDataSetChanged();
+
     }
 }
