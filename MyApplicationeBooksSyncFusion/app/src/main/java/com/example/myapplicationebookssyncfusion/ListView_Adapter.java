@@ -32,7 +32,7 @@ public class ListView_Adapter extends BaseAdapter {
     }
 
     @Override
-    public Object getItem(int position) {
+    public Item_Model getItem(int position) {
         return item_model_arrayList.get(position);
     }
 

@@ -46,8 +46,7 @@ public class ActionBarToolBarActivity extends AppCompatActivity {
     }
 
     //return current fragment on basis of position
-    public Fragment getFragment(int pos)
-    {
+    public Fragment getFragment(int pos)    {
         return  adapter.getItem(pos);
     }
 }

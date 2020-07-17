@@ -124,11 +124,11 @@ public class Toolbar_ActionMode_Callback implements ActionMode.Callback {
             listView_adapter.removeSelection();
             Fragment listFragment=new ActionBarToolBarActivity().getFragment(0);//Get List frgment
             if(listFragment!=null)
-                ((ListFragment)listFragment).setNullToActionMode();//set action mode null
+                ((ListViewFragment)listFragment).setNullToActionMode();//set action mode null
         }
         else
         {
-            recyclerViewAdpater.removeSelection();//remoce selection
+            recyclerViewAdpater.removeSelection();//remove selection
             Fragment recyclerFragment=new  ActionBarToolBarActivity().getFragment(1);//get recycler Fragment
             if(recyclerFragment!=null)
                 ((RecyclerView_Fragment) recyclerFragment).setNullToActionMode();//set action mode null

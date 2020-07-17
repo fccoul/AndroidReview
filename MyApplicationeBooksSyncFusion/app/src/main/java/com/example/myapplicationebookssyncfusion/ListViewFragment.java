@@ -3,10 +3,10 @@ package com.example.myapplicationebookssyncfusion;
 import android.os.Bundle;
 
 import androidx.appcompat.app.AppCompatActivity;
+import androidx.appcompat.view.ActionMode;
 import androidx.fragment.app.Fragment;
 
 import android.util.SparseBooleanArray;
-import android.view.ActionMode;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
@@ -107,11 +107,18 @@ public class ListViewFragment extends Fragment {
         adapter.toggleSelection(position);//toggle the selection
         boolean hasCheckedItems=adapter.getSelectedCount()>0; //check if any items are already selected or not
         if(hasCheckedItems && mActionMode==null)
-          mActionMode=((AppCompatActivity)getActivity()).startSupportActionMode(new Toolbar_A)
+          mActionMode=((AppCompatActivity)getActivity()).startSupportActionMode((ActionMode.Callback) new Toolbar_ActionMode_Callback(getActivity(),null,adapter,item_models,true));
+        else if (!hasCheckedItems && mActionMode != null)
+            // there no selected items, finish the actionMode
+            mActionMode.finish();
+        if (mActionMode != null)
+            //set action mode title on item selection
+            mActionMode.setTitle(String.valueOf(adapter
+                    .getSelectedCount()) + " selected");
     }
 
     //Set Action mode null after use
-    public void setNullActionMode()
+    public void setNullToActionMode()
     {
         if(mActionMode!=null)
             mActionMode=null;
