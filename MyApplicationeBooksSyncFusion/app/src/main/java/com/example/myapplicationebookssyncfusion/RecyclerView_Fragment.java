@@ -104,14 +104,14 @@ public class RecyclerView_Fragment extends Fragment {
         adapter.toggleSelection(position);//toggle the selection
         boolean hasCheckedItems=adapter.getSelectedCount()>0; //check if any items are already selected or not
         if(hasCheckedItems && mActionMode==null)
-            mActionMode=((AppCompatActivity)getActivity()).startSupportActionMode((ActionMode.Callback) new Toolbar_ActionMode_Callback(getActivity(),adapter,null,item_models,false));
+            mActionMode=((AppCompatActivity)getActivity()).startSupportActionMode(new Toolbar_ActionMode_Callback(getActivity(),adapter,null,item_models,false));
 
         else if(!hasCheckedItems && mActionMode!=null)
             //there no selected items,finish the actionMode
             mActionMode.finish();
         if(mActionMode!=null)
             //set actionmode title on item selection
-            mActionMode.setTitle(String.valueOf(adapter.getSelectedCount())+ "selected");
+            mActionMode.setTitle(String.valueOf(adapter.getSelectedCount())+ " selected");
 
     }
 

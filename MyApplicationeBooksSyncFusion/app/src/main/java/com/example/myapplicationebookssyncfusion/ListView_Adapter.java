@@ -46,15 +46,19 @@ public class ListView_Adapter extends BaseAdapter {
 
         LayoutInflater inflater=(LayoutInflater)context.getSystemService(Context.LAYOUT_INFLATER_SERVICE);
         ViewHolder holder;
+
+
         if(convertView==null)
         {
-convertView=inflater.inflate(R.layout.item_row,parent,false);
-holder=new ViewHolder();
+            convertView=inflater.inflate(R.layout.item_row,parent,false);
+            holder=new ViewHolder();
            holder.title=(TextView)convertView.findViewById(R.id.titleId);
            holder.subTitle=(TextView)convertView.findViewById(R.id.subtitleId);
+           convertView.setTag(holder);
         }
         else
             holder=(ViewHolder)convertView.getTag();
+
 holder.title.setText(item_model_arrayList.get(position).getTitle());
 holder.subTitle.setText(item_model_arrayList.get(position).getSubTitle());
 

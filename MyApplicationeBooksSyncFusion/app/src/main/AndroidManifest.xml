@@ -21,75 +21,85 @@
                 <category android:name="android.intent.category.LAUNCHER" />
             </intent-filter>
         </activity>
+
         <activity
             android:name=".NavigatioDrawer"
             android:theme="@style/AppTheme2">
+            <!--
             <intent-filter>
                 <action android:name="android.intent.action.MAIN" />
 
                 <category android:name="android.intent.category.LAUNCHER" />
             </intent-filter>
+            -->
         </activity>
         <activity android:name=".ActivityComponentUI">
-            <intent-filter>
-                <action android:name="android.intent.action.MAIN" />
+            <!--
+           <intent-filter>
+               <action android:name="android.intent.action.MAIN" />
 
-                <category android:name="android.intent.category.LAUNCHER" />
-            </intent-filter>
-        </activity>
-        <activity android:name=".ActivityMenuTab">
-            <intent-filter>
-                <action android:name="android.intent.action.MAIN" />
+               <category android:name="android.intent.category.LAUNCHER" />
+           </intent-filter>
+            -->
+       </activity>
+       <activity android:name=".ActivityMenuTab">
+          <!--
+           <intent-filter>
 
-                <category android:name="android.intent.category.LAUNCHER" />
-            </intent-filter>
-        </activity>
-        <activity android:name=".PersistADataActivity">
-            <intent-filter>
-                <action android:name="android.intent.action.MAIN" />
+               <action android:name="android.intent.action.MAIN" />
 
-                <category android:name="android.intent.category.LAUNCHER" />
-            </intent-filter>
-        </activity>
-        <activity android:name=".PickerActivity" />
-        <!--
-        <activity android:name=".ActivityComponentUI">
-            <intent-filter>
-                <action android:name="android.intent.action.MAIN" />
+               <category android:name="android.intent.category.LAUNCHER" />
+           </intent-filter>
+-->
+       </activity>
+       <activity android:name=".PersistADataActivity">
+           <!--
+           <intent-filter>
+               <action android:name="android.intent.action.MAIN" />
 
-                <category android:name="android.intent.category.LAUNCHER" />
-            </intent-filter>
-        </activity>
-        -->
-        <activity android:name=".LayoutListCustomized">
-            <intent-filter>
-                <action android:name="android.intent.action.MAIN" />
+               <category android:name="android.intent.category.LAUNCHER" />
+           </intent-filter>
+           -->
+       </activity>
+       <activity android:name=".PickerActivity" />
 
-                <category android:name="android.intent.category.LAUNCHER" />
-            </intent-filter>
-        </activity>
-        <activity android:name=".LayoutList">
-            <intent-filter>
-                <action android:name="android.intent.action.MAIN" />
+       <activity android:name=".LayoutListCustomized">
+           <!--
+           <intent-filter>
+               <action android:name="android.intent.action.MAIN" />
 
-                <category android:name="android.intent.category.LAUNCHER" />
-            </intent-filter>
-        </activity>
-        <activity android:name=".LayoutActivity">
-            <intent-filter>
-                <action android:name="android.intent.action.MAIN" />
+               <category android:name="android.intent.category.LAUNCHER" />
+           </intent-filter>
+           -->
+       </activity>
+       <activity android:name=".LayoutList">
+           <!--
+           <intent-filter>
+               <action android:name="android.intent.action.MAIN" />
 
-                <category android:name="android.intent.category.LAUNCHER" />
-            </intent-filter>
-        </activity>
-        <activity android:name=".SecondActivity" />
-        <activity android:name=".MainActivity">
-            <intent-filter>
-                <action android:name="android.intent.action.MAIN" />
+               <category android:name="android.intent.category.LAUNCHER" />
+           </intent-filter>
+           -->
+       </activity>
+       <activity android:name=".LayoutActivity">
+           <!--
+           <intent-filter>
+               <action android:name="android.intent.action.MAIN" />
 
-                <category android:name="android.intent.category.LAUNCHER" />
-            </intent-filter>
-        </activity>
-    </application>
+               <category android:name="android.intent.category.LAUNCHER" />
+           </intent-filter>
+           -->
+       </activity>
+       <activity android:name=".SecondActivity" />
+       <activity android:name=".MainActivity">
+           <!--
+           <intent-filter>
+               <action android:name="android.intent.action.MAIN" />
+
+               <category android:name="android.intent.category.LAUNCHER" />
+           </intent-filter>
+           -->
+       </activity>
+   </application>
 
 </manifest>

@@ -5,13 +5,14 @@ import android.drm.DrmStore;
 import android.os.Build;
 import android.util.Log;
 import android.util.SparseBooleanArray;
-import android.view.ActionMode;
+
 import android.view.Menu;
 import android.view.MenuItem;
 import android.widget.Toast;
 
 import androidx.core.view.MenuItemCompat;
 import androidx.fragment.app.Fragment;
+import androidx.appcompat.view.ActionMode;
 import androidx.fragment.app.ListFragment;
 import androidx.recyclerview.widget.RecyclerView;
 
@@ -47,7 +48,8 @@ public class Toolbar_ActionMode_Callback implements ActionMode.Callback {
     public boolean onPrepareActionMode(ActionMode mode, Menu menu) {
         //sometimes the meu will not be visible so for that we need to set their visibility manually in this method
         //so here show action menu according sdk levels
-        if(Build.VERSION.SDK_INT<11)
+
+       /* if(Build.VERSION.SDK_INT<11)
         {
             MenuItemCompat.setShowAsAction(menu.findItem(R.id.action_delete),MenuItemCompat.SHOW_AS_ACTION_NEVER);
             MenuItemCompat.setShowAsAction(menu.findItem(R.id.action_copy),MenuItemCompat.SHOW_AS_ACTION_NEVER);
@@ -55,10 +57,12 @@ public class Toolbar_ActionMode_Callback implements ActionMode.Callback {
         }
         else
         {
+
+        */
             menu.findItem(R.id.action_delete).setShowAsAction(MenuItem.SHOW_AS_ACTION_ALWAYS);
             menu.findItem(R.id.action_copy).setShowAsAction(MenuItem.SHOW_AS_ACTION_ALWAYS);
             menu.findItem(R.id.action_forward).setShowAsAction(MenuItem.SHOW_AS_ACTION_ALWAYS);
-        }
+        //}
         return true;
     }
 

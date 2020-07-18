@@ -7,6 +7,7 @@ import android.view.LayoutInflater;
 import android.view.ViewGroup;
 
 import androidx.annotation.NonNull;
+import androidx.core.content.ContextCompat;
 import androidx.recyclerview.widget.RecyclerView;
 
 import java.util.ArrayList;
@@ -39,6 +40,7 @@ mSelectedItemsIds=new SparseBooleanArray();
         //setting text over text view
         holder.title.setText(arrayList.get(position).getTitle());
         holder.subTitle.setText(arrayList.get(position).getSubTitle());
+        holder.title.setTextColor(ContextCompat.getColor(context,R.color.colorPrimaryDarkT));
 
         //-change backgroud color of the selected items in list view
         holder.itemView.setBackgroundColor(mSelectedItemsIds.get(position)?0x9934B5E4: Color.TRANSPARENT);
