@@ -49,7 +49,7 @@ public class Toolbar_ActionMode_Callback implements ActionMode.Callback {
         //sometimes the meu will not be visible so for that we need to set their visibility manually in this method
         //so here show action menu according sdk levels
 
-       /* if(Build.VERSION.SDK_INT<11)
+       if(Build.VERSION.SDK_INT<11)
         {
             MenuItemCompat.setShowAsAction(menu.findItem(R.id.action_delete),MenuItemCompat.SHOW_AS_ACTION_NEVER);
             MenuItemCompat.setShowAsAction(menu.findItem(R.id.action_copy),MenuItemCompat.SHOW_AS_ACTION_NEVER);
@@ -58,11 +58,10 @@ public class Toolbar_ActionMode_Callback implements ActionMode.Callback {
         else
         {
 
-        */
             menu.findItem(R.id.action_delete).setShowAsAction(MenuItem.SHOW_AS_ACTION_ALWAYS);
             menu.findItem(R.id.action_copy).setShowAsAction(MenuItem.SHOW_AS_ACTION_ALWAYS);
             menu.findItem(R.id.action_forward).setShowAsAction(MenuItem.SHOW_AS_ACTION_ALWAYS);
-        //}
+        }
         return true;
     }
 
